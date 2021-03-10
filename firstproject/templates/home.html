@@ -1,0 +1,19 @@
+<html>
+    <h1>HOMUUU</h1>
+    {% for i in object_list %}
+     <a href ={%  url 'detail' i.pk %}>{{ i.name }}</a>
+
+        
+        {{ i.standard }} -<a href={% url 'edit' i.pk  %}>edit</a>
+        <a href={% url 'delete' i.pk %}>delete</a>
+
+        <a href ={% url 'create' %}>create</a> <br>
+         {{i.update_date}}
+        <hr>
+
+    {% endfor %}
+    
+  
+    </ul>
+
+</html>

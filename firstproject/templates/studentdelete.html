@@ -1,0 +1,11 @@
+<h1>Delete Student Detail</h1>
+
+<h3> {{ object.name }}</h3>
+
+<form method='POST'>
+    {% csrf_token %}
+    <table>
+    {{form.as_table}}
+</table>
+<button >Delete!</button>
+</form>

@@ -1,10 +1,21 @@
-<h1>student details</h1>
-<ul>
-<li>
-   name: {{ object.name }}<br>
-   class: {{ object.standard }}<br> 
-  address:{{object.address}}--{{ object.update_date }}<br>
+{% if user.is_authenticated %}
 
- <a href={% url 'home' %}>back</a>
-</li>
-</ul>
+   <h1>student details</h1>
+   <ul>
+   <li>
+      name: {{ object.name }}<br>
+      class: {{ object.standard }}<br> 
+<!-- safe is for securing the html from html injecting in the text fields 
+using safe html tags wont get display when we type in the textfield -->
+   address:{{object.address | safe}}--{{ object.update_date }}<br>
+
+   <a href={% url 'home' %}>back</a>
+   </li>
+   </ul>
+
+{% else %}
+   <h4>you are not logged in to view this page </h4>
+   <h3> <a href={% url 'login' %}>login</a></h3>
+
+{% endif %}
+

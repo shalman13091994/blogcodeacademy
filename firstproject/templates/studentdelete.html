@@ -1,11 +1,18 @@
-<h1>Delete Student Detail</h1>
+{% if user.is_authenticated %}
 
-<h3> {{ object.name }}</h3>
+    <h1>Delete Student Detail</h1>
 
-<form method='POST'>
-    {% csrf_token %}
-    <table>
-    {{form.as_table}}
-</table>
-<button >Delete!</button>
-</form>
+    <h3> {{ object.name }}</h3>
+
+    <form method='POST'>
+        {% csrf_token %}
+        <table>
+        {{form.as_table}}
+    </table>
+    <button >Delete!</button>
+    </form>
+{% else  %}
+<i>login to view this page</i>
+<h3> <a href={% url 'login' %}>login</a></h3>
+
+{% endif %}

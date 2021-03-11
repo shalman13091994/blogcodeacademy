@@ -19,4 +19,9 @@ from django.urls import path,include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('firstapp.urls')),
+    #django will manage the app urls for the user authentication 
+    # so there no need to view and  map url for login and logout
+    
+    path('membersapp/',include('django.contrib.auth.urls')),
+    path('membersapp/',include('membersapp.urls')),
 ]

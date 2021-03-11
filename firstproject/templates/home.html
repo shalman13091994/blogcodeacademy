@@ -1,18 +1,42 @@
 <html>
     <h1>HOMUUU</h1>
-    {% for i in object_list %}
-     <a href ={%  url 'detail' i.pk %}>{{ i.name }}</a>
+
+{% if user.is_authenticated %}
 
         
-        {{ i.standard }} -<a href={% url 'edit' i.pk  %}>edit</a>
-        <a href={% url 'delete' i.pk %}>delete</a>
+        <h3> <a href={% url 'logout' %}>logout</a></h3>
 
-        <a href ={% url 'create' %}>create</a> <br>
-         {{i.update_date}}
-        <hr>
+{% else  %}
+        <h2> <a href={% url 'registration' %}>register</a></h2>
+        <h3> <a href={% url 'login' %}>login</a></h3>
+{% endif %}
+        
+   
 
-    {% endfor %}
+
+{% for i in object_list %}
+
+     <a href ={%  url 'detail' i.pk %}>{{ i.name }}</a> 
+        {{ i.standard }} 
+
+
     
+
+            -<a href={% url 'edit' i.pk  %}>edit</a>
+            <a href={% url 'delete' i.pk %}>delete</a>
+
+            <a href ={% url 'create' %}>create</a> <br>
+            {{i.update_date}}
+<!-- slice for the no.of characters to be displayed and 
+safe is for securing the html from html injecting in the text fields 
+using safe html tags wont get display when we type in the textfield -->
+        
+        {{i.address | slice:':198' | safe}} 
+
+        <hr>
+       
+{% endfor %}
+
   
     </ul>
 

@@ -1,11 +1,18 @@
-<h1>StudentCreate</h1>
+{% if user.is_authenticated %}
 
-<form method='POST'>
-    {% csrf_token %}
-<table>
-    {{form.as_table}}
-</table>
-    <button>POST</button>
-    
+    <h1>StudentCreate</h1>
 
-</form>
+    <form method='POST'>
+        {% csrf_token %}
+    <table>
+        {{form.as_table}}
+    </table>
+        <button>POST</button>
+        
+
+    </form>
+
+
+{% endif %}
+<i>you aren't logged in</i>
+<h3> <a href={% url 'login' %}>login</a></h3>

@@ -5,7 +5,7 @@ from datetime import datetime,date
 class student(models.Model):
     name=models.CharField(max_length=100)
     standard=models.CharField(max_length=100)
-    address=models.TextField(max_length=300)
+    address=models.TextField(max_length=1600)
     #this is for to set the blog upddate date 
     update_date=models.DateField(auto_now_add=True)
     
